@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.apache.commons.lang.StringUtils;
@@ -28,6 +29,8 @@ public class TriageHelper {
 	private static String WINDOW = "windows";
 	private static String LINUX = "linux";
 	private static String MAC = "mac";
+	
+	public static Map<String, Map<String, String>> resultMap = new HashMap<String, Map<String, String>>();
 	
 	public static void setIndexRootPath(String dir) {
 		if (StringUtils.isBlank(dir)) {
@@ -105,7 +108,20 @@ public class TriageHelper {
 		}
 		if (query == null)
 			return null;
-		return searchResult(query);
+		Map<String, String> ret = searchResult(query);
+		if (!resultMap.containsKey(query)) {
+			resultMap.put(query, ret);
+		}
+		else {
+			Map<String, String> temp = resultMap.get(query);
+			for (Entry<String, String> entry : ret.entrySet()) {
+				if(temp.containsKey(entry.getKey()))
+					continue;
+				temp.put(entry.getKey(), entry.getValue());
+			}
+			resultMap.put(query, temp);
+		}
+		return ret;
 	}
 	
 	public static Map<String, String> getTriageArgs() {

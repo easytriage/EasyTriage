@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
@@ -27,7 +28,7 @@ public class Triage {
 //			doTriage(entry.getKey(),entry.getValue());
 //			//copyToFile(entry.getKey());
 //		}
-		Connection con = SSHHelper.getSSHConnection("10.115.172.234", "root", "ca$hc0w");
+		Connection con = SSHHelper.getSSHConnection("10.115.173.209", "root", "ca$hc0w");
 		String url = "http://pa-dbc1130.eng.vmware.com/bpei/triage/";
 		String path = "/tmp/result.json";
 		List<String> triageArgs = TriageHelper.getRunId(con, path);
@@ -44,6 +45,13 @@ public class Triage {
 		    LogHandler.copyToFile(id, logFile);
 		    SSHHelper.scpLocalFileToRemote(con, logFile.getAbsolutePath(), "/dbc/pa-dbc1130/bpei/triage");
 		    LogHandler.clearLogFile();
+		}
+		for (Entry<String, Map<String, String>> entry : TriageHelper.resultMap.entrySet()) {
+			System.out.println("Failed by the similiar error: " + entry.getKey());
+			for (Entry <String, String> e : entry.getValue().entrySet()) {
+				System.out.println(e.getKey().split("_TDS.")[1]);
+			}
+			System.out.println("");
 		}
 	}
 	
