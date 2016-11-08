@@ -29,6 +29,9 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 
+/*
+ * Contains the methods to create index and search
+ * */
 public class CreateIndexAndSearch {
 	private static final Logger logger = Logger.getLogger(CreateIndexAndSearch.class);
 	

@@ -22,7 +22,9 @@ import org.apache.log4j.Logger;
 
 import com.easytriage.result.SSHHelper;
 
-
+/*
+ * Contains the method used to triage
+ * */
 public class TriageHelper {
 	private static final Logger logger = Logger.getLogger(TriageHelper.class);
 	

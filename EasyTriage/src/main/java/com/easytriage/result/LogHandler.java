@@ -1,6 +1,5 @@
 package com.easytriage.result;
 
-
 import java.util.List;
 import java.io.File;  
 import java.io.FileInputStream;  
@@ -15,6 +14,9 @@ import org.apache.log4j.Logger;
 
 import com.easytriage.analysis.TriageHelper;
 
+/*
+ * Class contains methods for generating triage result from log
+ * */
 public class LogHandler {
 	private static final Logger logger = Logger.getLogger(LogHandler.class);
 	

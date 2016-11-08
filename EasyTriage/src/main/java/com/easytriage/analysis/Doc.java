@@ -1,5 +1,8 @@
 package com.easytriage.analysis;
 
+/*
+ * This class describe the result contains filename, content and path
+ * */
 public class Doc {
 	private String content;
 	private String filename;

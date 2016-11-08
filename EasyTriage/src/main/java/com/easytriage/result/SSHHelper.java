@@ -27,6 +27,9 @@ import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
 
+/*
+ * The class contains ssh methods
+ * */
 public class SSHHelper {
 
 	private static final Logger log = Logger.getLogger(SSHHelper.class);
